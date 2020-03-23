@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+main {
+  display: flex;
+  max-height: 100vh;
+}
+
+#root {
+  display: flex;
+  width: 17em;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+#root div {
+  border: 2px solid black;
+  width: 90%;
+  margin: 1.57em;
+}
+
+#detailpanel {
+  flex: 1.5;
+  width: 300px;
+  border: 1px solid black;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+}

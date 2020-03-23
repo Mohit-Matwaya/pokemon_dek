@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div id="root"></div>
+      <div id="detailpanel">
+        <img src="./blank.png" alt="pokemon image" id="pokemonImage" />
+        <table id="detailTable">
+          <tbody>
+            <tr>
+              <th>general</th>
+            </tr>
+            <tr>
+              <td>Name</td>
+              <td id="pokemonName">.</td>
+            </tr>
+            <tr>
+              <td>Weight</td>
+              <td id="pokemonWeight">.</td>
+            </tr>
+            <tr>
+              <td>Height</td>
+              <td id="pokemonHeight">.</td>
+            </tr>
+            <tr>
+              <td>Exp</td>
+              <td id="pokemonExp">.</td>
+            </tr>
+            <tr>
+              <th>Abilities</th>
+            </tr>
+            <tr id="pokemonAbilities"></tr>
+            <tr>
+              <th>Types</th>
+            </tr>
+            <tr id="pokemonTypes"></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <nav>
+      <button id="prevpg">prev &lt;</button>
+      <button id="nextpg">next &gt;</button>
+    </nav>
+    <script src="./pokedetail.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>

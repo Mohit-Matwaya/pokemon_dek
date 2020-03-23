@@ -1,0 +1,22 @@
+#detailpanel {
+  background-color: #d36363;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 5em;
+}
+
+#detailpanel #detailTable {
+  background-color: #fff;
+  border-collapse: collapse;
+  width: 20em;
+}
+
+#detailpanel #detailTable th,
+#detailpanel #detailTable td {
+  text-align: left;
+  width: 3em;
+  padding: 0.3em;
+  border: 1px solid black;
+}

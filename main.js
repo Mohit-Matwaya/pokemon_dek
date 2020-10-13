@@ -1,11 +1,12 @@
-const root = document.querySelector("#root");
-const nextPgBtn = document.querySelector("#nextpg");
-const prevPgBtn = document.querySelector("#prevpg");
+import { Pokemon } from './src/Pokemon.js';
+const root = document.querySelector('#root');
+const nextPgBtn = document.querySelector('#nextpg');
+const prevPgBtn = document.querySelector('#prevpg');
 
-const API = "https://pokeapi.co/api/v2/pokemon";
+const API = 'https://pokeapi.co/api/v2/pokemon';
 let offset = 0;
 const fetchData = async () => {
-  const response = await fetch(API + "?limit=40&offset=" + offset);
+  const response = await fetch(API + '?limit=40&offset=' + offset);
   const data = await response.json();
   const pokemons = data.results;
   createPokemon(pokemons);
@@ -13,33 +14,27 @@ const fetchData = async () => {
 
 const createPokemon = pokemons => {
   pokemons.forEach(pokemon => {
-    const pokemonDiv = document.createElement("div");
-    const pokemonName = document.createElement("p");
-    const pokemonId = pokemon.url.split("/")[6];
-    const pokemonTmbnail = document.createElement("img");
-    pokemonTmbnail.setAttribute(
-      "src",
-      `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`
-    );
-
-    pokemonName.innerText = pokemon.name;
-    pokemonName.setAttribute("id", pokemonId);
-    pokemonDiv.appendChild(pokemonTmbnail);
-    pokemonDiv.appendChild(pokemonName);
-    pokemonDiv.addEventListener("mouseup", () => {
-      fetchPokemonDetail(pokemonId);
+    var pokemonId = pokemon.url.split('/')[6];
+    const newPokemon = Pokemon({ ...pokemon, id: pokemon.url.split('/')[6] });
+    const pokemonDiv = document.createElement('div');
+    pokemonDiv.innerHTML = `
+      <img src="${newPokemon.thumb}" />
+      <p id="${newPokemon.id}">${newPokemon.name}</p>
+    `;
+    pokemonDiv.addEventListener('click', () => {
+      fetchPokemonDetail(newPokemon.id);
     });
     root.appendChild(pokemonDiv);
   });
 };
 
-window.addEventListener("load", fetchData);
-nextPgBtn.addEventListener("mouseup", () => {
+window.addEventListener('load', fetchData);
+nextPgBtn.addEventListener('mouseup', () => {
   if (offset < 200) offset += 40;
   fetchData();
 });
 
-prevPgBtn.addEventListener("mouseup", () => {
-  if (offset > 0) offset -= 40;
+prevPgBtn.addEventListener('mouseup', () => {
+  offset = Math.max(0, offset - 40);
   fetchData();
 });
